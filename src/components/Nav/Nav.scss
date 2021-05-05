@@ -1,0 +1,22 @@
+.nav {
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    margin-bottom: 32px;
+  }
+
+  &__link {
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    color: #000;
+
+    &--active {
+      color: #1c54d3;
+    }
+  }
+}
