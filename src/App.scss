@@ -15,6 +15,7 @@ html {
 body,
 h1,
 h2,
+h3,
 p,
 button,
 ul,
@@ -92,13 +93,13 @@ li {
     }
   }
 
-  &__router-button {
+  &__router-link {
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
     line-height: 150%;
-    background-color: inherit;
-    border: none;
+    text-decoration: none;
+    color: #000;
 
     &--active {
       color: #2f66e3;

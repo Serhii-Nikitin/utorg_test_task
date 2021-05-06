@@ -20,19 +20,19 @@ export const Header = () => (
     </div>
     <div className="header__bottom-container">
       <div className="header__router-buttons">
-        <button
-          type="button"
-          className="header__router-button header__router-button--active"
+        <a
+          href="/"
+          className="header__router-link header__router-link--active"
         >
           Home
-        </button>
+        </a>
         {` / `}
-        <button
-          type="button"
-          className="header__router-button"
+        <a
+          href="/"
+          className="header__router-link"
         >
           FAQ
-        </button>
+        </a>
       </div>
     </div>
   </header>
