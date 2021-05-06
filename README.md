@@ -1,2 +1,2 @@
-[DEMO LINK](http://Serhii-Nikitin.github.io/utorg_test_task/)
+[DEMO LINK](http://serhii-nikitin.github.io/utorg_test_task/)
 
