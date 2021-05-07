@@ -16,6 +16,7 @@
     width: 738px;
     text-align: center;
     margin: 40px 0 160px;
+    transition: font-size 500ms;
   }
 
   &__container {
@@ -69,16 +70,6 @@
     font-size: 22px;
     line-height: 133%;
     max-width: 758px;
-
-    // &::after {
-    //   content: '';
-    //   display: inline-block;
-    //   background: url('../../images/select.svg') no-repeat center;
-    //   width: 16px;
-    //   height: 6px;
-    //   background-size: contain;
-    //   align-self: center;
-    // }
   }
 
   &__question-toggler {
@@ -144,6 +135,10 @@
     margin-bottom: 273px;
   }
 
+  &__info-small-screen {
+    display: none;
+  }
+
   &__info-title {
     font-style: normal;
     font-weight: 800;
@@ -177,5 +172,96 @@
     display: flex;
     gap: 81px;
     flex-wrap: nowrap;
+  }
+}
+
+@media (max-width: 1200px) {
+  .main {
+    &__title {
+      display: flex;
+      flex-wrap: wrap;
+      width: fit-content;
+      font-size: 56px;
+      line-height: 110%;
+    }
+
+    &__container {
+      width: calc(100% - 160px);
+      display: block;
+      align-self: center;
+    }
+
+    &__content {
+      width: 100%;
+    }
+
+    &__info {
+      width: 100%;
+      height: 300px;
+      border-radius: 0;
+      margin-bottom: 91px;
+    }
+
+    &__bottom {
+      width: calc(100% - 32px);
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .main {
+    &__container {
+      width: calc(100% - 34px);
+      display: block;
+      align-self: center;
+    }
+
+    &__section {
+      &::before {
+        display: none;
+      }
+    }
+
+    &__subtitle {
+      font-size: 36px;
+      line-height: 125%;
+      margin-bottom: 40px;
+    }
+
+    &__question {
+      font-size: 17px;
+    }
+
+    &__answer {
+      font-size: 14px;
+    }
+
+    &__info {
+      display: none;
+    }
+
+    &__info-small-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      height: 300px;
+      border-radius: 0;
+      margin-bottom: 91px;
+      background: #fff;
+      padding: 50px 0;
+      margin-top: calc(129px - 40px);
+    }
+
+    &__info-title {
+      font-size: 28px;
+      text-align: center;
+    }
+
+    &__info-content {
+      width: 100%;
+      padding: 0 34px;
+    }
   }
 }

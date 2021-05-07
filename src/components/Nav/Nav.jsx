@@ -1,26 +1,36 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Nav.scss';
+import { SectionType } from '../../Types';
 
-export const Nav = () => (
+export const Nav = ({ sections, setSelectedSectionId, selectedSectionId }) => (
   <nav className="nav">
     <ul className="nav__list">
-      <li className="nav__item">
-        <a
-          href="#General_questions"
-          className="nav__link nav__link--active"
+      {sections.map(section => (
+        <li
+          key={section.id}
+          className="nav__item"
         >
-          General questions
-        </a>
-      </li>
-      <li className="nav__item">
-        <a href="#Payment_questions" className="nav__link">Payment questions</a>
-      </li>
-      <li className="nav__item">
-        <a href="#Transaction" className="nav__link">Transaction</a>
-      </li>
-      <li className="nav__item">
-        <a href="#Verification" className="nav__link">Verification</a>
-      </li>
+          <a
+            href={`#${section.id}`}
+            className={selectedSectionId === section.id
+              ? 'nav__link nav__link--active'
+              : 'nav__link'
+            }
+            onClick={() => setSelectedSectionId(section.id)}
+          >
+            {section.title}
+          </a>
+        </li>
+      ))}
     </ul>
   </nav>
 );
+
+Nav.propTypes = {
+  sections: PropTypes.arrayOf(
+    PropTypes.shape(SectionType).isRequired,
+  ).isRequired,
+  setSelectedSectionId: PropTypes.func.isRequired,
+  selectedSectionId: PropTypes.number.isRequired,
+};

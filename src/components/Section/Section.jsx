@@ -1,23 +1,65 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
+import { SectionType } from '../../Types';
 
 export const Section = ({
   section,
-  selectedQuestionId,
-  setSelectedQuestionId,
+  selectedQuestionIds,
+  setSelectedQuestionIds,
+  setSelectedSectionId,
+  selectedSectionId,
 }) => {
   const handleSelect = (id) => {
-    if (selectedQuestionId === id) {
-      setSelectedQuestionId(0);
+    if (selectedQuestionIds.includes(id)) {
+      const updatedSelectedQuestionIds = selectedQuestionIds
+        .filter(item => item !== id);
+
+      setSelectedQuestionIds(updatedSelectedQuestionIds);
     } else {
-      setSelectedQuestionId(id);
+      setSelectedQuestionIds(current => [
+        ...current,
+        id,
+      ]);
     }
   };
 
+  const listenScrollEvent = () => {
+    if (window.scrollY > 0 && window.scrollY < 1250) {
+      setSelectedSectionId(25);
+    }
+
+    if (window.scrollY > 1250 && window.scrollY < 2000) {
+      setSelectedSectionId(26);
+    }
+
+    if (window.scrollY > 2000 && window.scrollY < 2450) {
+      setSelectedSectionId(27);
+    }
+
+    if (window.scrollY > 2450) {
+      setSelectedSectionId(28);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', listenScrollEvent);
+
+    return () => (
+      window.removeEventListener('scroll', listenScrollEvent)
+    );
+  }, []);
+
   return (
-    <div className="main__section">
-      <h2 className="main__subtitle">{section.title}</h2>
+    <section
+      className="main__section"
+      id={`${section.id}`}
+    >
+      <h2
+        className="main__subtitle"
+      >
+        {section.title}
+      </h2>
       <ul className="main__questions-list">
         {section.content.map(item => (
           <Fragment key={item.id}>
@@ -29,63 +71,48 @@ export const Section = ({
             >
               <h3 className="main__question">{item.question}</h3>
               <div
-                className={selectedQuestionId === item.id
+                className={selectedQuestionIds.includes(item.id)
                   ? 'main__question-toggler'
                   : 'main__question-rotate-toggler'
                 }
               />
             </li>
-            {/* main__answer--active */}
-            {selectedQuestionId === item.id
-              ? (
-                <div className="main__answer">
-                  <p>{item.answer.title}</p>
-                  <ul className="main__wallets-list">
-                    {item.answer.body.map(part => (
-                      <li
-                        className="main__wallets-item"
-                        key={uuidv4()}
-                      >
-                        {part}
-                      </li>
-                    ))}
-                  </ul>
-                  <ul className="main__recommended-walets-list">
-                    {item.answer.recomandation.map(el => (
-                      <li
-                        key={uuidv4()}
-                        className="main__recommended-walets-item"
-                        dangerouslySetInnerHTML={{ __html: el }}
-                      />
-                    ))}
-                  </ul>
-                </div>
-              ) : ''
-            }
+            {selectedQuestionIds.includes(item.id) && (
+              <div className="main__answer">
+                <p>{item.answer.title}</p>
+                <ul className="main__wallets-list">
+                  {item.answer.body.map(part => (
+                    <li
+                      className="main__wallets-item"
+                      key={uuidv4()}
+                    >
+                      {part}
+                    </li>
+                  ))}
+                </ul>
+                <ul className="main__recommended-walets-list">
+                  {item.answer.recomandation.map(el => (
+                    <li
+                      key={uuidv4()}
+                      className="main__recommended-walets-item"
+                      dangerouslySetInnerHTML={{ __html: el }}
+                    />
+                  ))}
+                </ul>
+              </div>
+            )}
           </Fragment>
         ))}
       </ul>
-    </div>
+    </section>
   );
 };
 
 Section.propTypes = {
-  section: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    content: PropTypes.arrayOf(
-      PropTypes.shape({
-        question: PropTypes.string.isRequired,
-        id: PropTypes.number.isRequired,
-        answer: PropTypes.shape({
-          title: PropTypes.string.isRequired,
-          body: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-          recomandation: PropTypes.arrayOf(
-            PropTypes.string.isRequired,
-          ).isRequired,
-        }).isRequired,
-      }).isRequired,
-    ).isRequired,
-  }).isRequired,
-  selectedQuestionId: PropTypes.number.isRequired,
-  setSelectedQuestionId: PropTypes.func.isRequired,
+  section: PropTypes.shape(SectionType).isRequired,
+  selectedQuestionIds: PropTypes.arrayOf(
+    PropTypes.number.isRequired,
+  ).isRequired,
+  setSelectedQuestionIds: PropTypes.func.isRequired,
+  setSelectedSectionId: PropTypes.func.isRequired,
 };
