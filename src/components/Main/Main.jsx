@@ -33,7 +33,6 @@ export const Main = () => {
                 selectedQuestionIds={selectedQuestionIds}
                 setSelectedQuestionIds={setSelectedQuestionIds}
                 setSelectedSectionId={setSelectedSectionId}
-                selectedSectionId={selectedSectionId}
               />
             ))}
           </div>

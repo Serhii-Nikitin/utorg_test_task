@@ -1,4 +1,4 @@
-import React, { Fragment, useRef, useEffect } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { SectionType } from '../../Types';
@@ -8,7 +8,6 @@ export const Section = ({
   selectedQuestionIds,
   setSelectedQuestionIds,
   setSelectedSectionId,
-  selectedSectionId,
 }) => {
   const handleSelect = (id) => {
     if (selectedQuestionIds.includes(id)) {
