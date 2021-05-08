@@ -210,5 +210,11 @@
         order: 2;
       }
     }
+
+    &__support {
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
   }
 }
