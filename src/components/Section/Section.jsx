@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import { SectionType } from '../../Types';
+import './Section.scss';
 
 export const Section = ({
   section,
@@ -51,49 +52,49 @@ export const Section = ({
 
   return (
     <section
-      className="main__section"
+      className="main__section section"
       id={`${section.id}`}
     >
       <h2
-        className="main__subtitle"
+        className="section__subtitle"
       >
         {section.title}
       </h2>
-      <ul className="main__questions-list">
+      <ul className="section__questions-list">
         {section.content.map(item => (
           <Fragment key={item.id}>
             <li
               role="presentation"
-              className="main__questions-item"
+              className="section__questions-item"
               onKeyDown={() => {}}
               onClick={() => handleSelect(item.id)}
             >
-              <h3 className="main__question">{item.question}</h3>
+              <h3 className="section__question">{item.question}</h3>
               <div
                 className={selectedQuestionIds.includes(item.id)
-                  ? 'main__question-toggler'
-                  : 'main__question-rotate-toggler'
+                  ? 'section__question-toggler'
+                  : 'section__question-rotate-toggler'
                 }
               />
             </li>
             {selectedQuestionIds.includes(item.id) && (
-              <div className="main__answer">
+              <div className="section__answer">
                 <p>{item.answer.title}</p>
-                <ul className="main__wallets-list">
+                <ul className="section__wallets-list">
                   {item.answer.body.map(part => (
                     <li
-                      className="main__wallets-item"
+                      className="section__wallets-item"
                       key={uuidv4()}
                     >
                       {part}
                     </li>
                   ))}
                 </ul>
-                <ul className="main__recommended-walets-list">
+                <ul className="section__recommended-walets-list">
                   {item.answer.recomandation.map(el => (
                     <li
                       key={uuidv4()}
-                      className="main__recommended-walets-item"
+                      className="section__recommended-walets-item"
                       dangerouslySetInnerHTML={{ __html: el }}
                     />
                   ))}

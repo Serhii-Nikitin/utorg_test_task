@@ -1,23 +1,23 @@
 export const partners = [
   {
-    src: 'images/brands/busines_insider.svg',
+    src: 'images/brands/busines_insider.png',
   },
   {
-    src: 'images/brands/bloomberg.svg',
+    src: 'images/brands/bloomberg.png',
   },
   {
-    src: 'images/brands/reuters.svg',
+    src: 'images/brands/reuters.png',
   },
   {
-    src: 'images/brands/forbes.svg',
+    src: 'images/brands/forbes.png',
   },
   {
-    src: 'images/brands/bitcoin.svg',
+    src: 'images/brands/bitcoin.png',
   },
   {
-    src: 'images/brands/investing.svg',
+    src: 'images/brands/investing.png',
   },
   {
-    src: 'images/brands/cbs.svg',
+    src: 'images/brands/cbs.png',
   },
 ];

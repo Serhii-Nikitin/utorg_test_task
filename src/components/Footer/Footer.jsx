@@ -6,7 +6,7 @@ export const Footer = () => (
     <div className="footer__logo" />
     <div className="footer__contact-details">
       <div className="footer__social-media">
-        <div className="footer__facebook">
+        <div className="footer__social-media-item">
           <a
             className="footer__social-media-link"
             href="https://uk-ua.facebook.com/"
@@ -14,7 +14,7 @@ export const Footer = () => (
             FaceBook
           </a>
         </div>
-        <div className="footer__twitter">
+        <div className="footer__social-media-item">
           <a
             className="footer__social-media-link"
             href="https://twitter.com/"
@@ -22,7 +22,7 @@ export const Footer = () => (
             Twitter
           </a>
         </div>
-        <div className="footer__blog">
+        <div className="footer__social-media-item">
           <a
             className="footer__social-media-link"
             href="/"
@@ -191,8 +191,8 @@ export const Footer = () => (
         </ul>
       </div>
     </div>
-    <div className="footer__support">
+    <a href="mailto:support@utorg.pro" className="footer__support">
       support@utorg.pro
-    </div>
+    </a>
   </footer>
 );

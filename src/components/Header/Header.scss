@@ -106,7 +106,13 @@
 
   &__burger-button {
     border: none;
+    border-radius: 30%;
     background-color: transparent;
+    transition: box-shadow 200ms;
+
+    &:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2), 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
   }
 }
 

@@ -48,7 +48,7 @@ export const Main = () => {
             {`via `}
             <a href="/" className="main__info-link">live chat</a>
             {` or `}
-            <a href="/" className="main__info-link">email</a>
+            <a href="mailto:/" className="main__info-link">email</a>
             {` at every step of the way`}
           </div>
         </div>
